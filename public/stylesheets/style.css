@@ -1,8 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 90%;
+  max-width: 75rem;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  color: #000;
+}
+
+li {
+  list-style-type: none;
 }
 
 a {
-  color: #00B7FF;
+  color: #000;
+  text-decoration: none;
+}
+
+header {
+  padding: 2rem 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav h2 {
+  letter-spacing: .1rem;
+}
+
+header nav h3 {
+  margin-top: .5rem;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: .5rem 0;
+  border-radius: 1rem;
+}
+
+#page-title {
+  font-family: 'Meow Script', cursive;
+  font-size: 4rem;
+}
+
+.about {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.068);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.068);
+}
+
+.about p {
+  font-size: 1.2rem;
+}
+
+.cube-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-row-gap: 8rem;
+  padding: 5rem;
+  margin-bottom: .5rem;
+}
+
+.cube {
+  position: relative;
+  height: 16rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.cube:hover {
+  background-color: rgba(0, 0, 0, 0.014);
+}
+
+#cube-1 {
+  grid-column: 3;
+}
+
+#cube-3 {
+  grid-column: 3;
+}
+
+#cube-5 {
+  grid-column: 3;
+}
+
+.cube-container-loop {
+  padding: 3rem 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 3rem;
+}
+
+.index-cube-lower {
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.459);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: .2rem 0;
+}
+
+.index-cube-lower h5 {
+  font-size: 1.2rem;
+  letter-spacing: .05rem;
+}
+
+.index-cube-lower span {
+  font-size: .8rem;
+}
+
+#pickup-container {
+  display: flex;
+  flex-direction: column;
+  height: 52rem;
+  justify-content: space-evenly;
+}
+
+.create-nav ul {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 1px solid rgba(17, 17, 17, 0.068);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.068);
+}
+
+.create-nav a {
+  letter-spacing: .1rem;
+}
+
+.create-nav a:hover {
+  color: green;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+footer p {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.3rem;
+  align-items: center;
+}
+
+.fa-github {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.fa-github:hover {
+  transform: scale(1.2);
 }

@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+    section.about
+        if error 
+            p Problem getting db content.
+        else 
+            p Ever wanted to talk about one of the more technical aspects of guitars but probably still know nothing about them? Check out these detailed links about the two biggest pickup types!
+    
+    section.subpage-title 
+        h1=title
+
+    section.cube-container-loop(id="pickup-container")  
+        each pickup in pickup_list
+            a.cube(href=pickup.url)
+                div.index-cube-lower 
+                    h5 !{pickup.name} 
+        else 
+            p There are no pickups here.
+
+    
+        

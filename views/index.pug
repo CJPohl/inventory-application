@@ -1,5 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section.about
+    if error 
+      p Problem getting db content.
+    else 
+      p Welcome to #[em Pickup Artists], the world's greatest provider and curator of the best guitars available.  Currently our warehouse holds !{data.guitar_instance_count} guitars from !{data.manufacturer_count} different manufacturers.  !{data.guitar_instance_refurbished_count} of which are refurbished!  The creaters and hardworking employees of #[em Pickup Artists] are always on the look to ripoff unknowing victims and turn a piece of overrated junk into profit. 
+
+  section.cube-container
+    a.cube(href="/inventory/guitarsall")
+      div.index-cube-lower 
+        h5 All Guitar Models 
+        span !{data.guitar_count} guitars and counting
+    
+    a.cube(href="/inventory/guitarinstance/all", id="cube-1") 
+      div.index-cube-lower 
+        h5 Current Inventory
+        span !{data.guitar_instance_count} guitars and counting 
+    
+    a.cube(href="/inventory/manufacturer/all") 
+      div.index-cube-lower 
+        h5 All Manufacturers
+        span !{data.manufacturer_count} manufacturers and counting
+
+    a.cube(href="/inventory/pickup/all", id="cube-3") 
+      div.index-cube-lower 
+        h5 Pickup Information
+        span How does these pickups sound different?
+    
+    a.cube(href="/inventory/guitarsall") 
+      div.index-cube-lower 
+        h5 Inventory Modifications
+        span Add, update, or delete our inventory. We don't care!
+
+    a.cube(href="/inventory/guitarsall", id="cube-5") 
+      div.index-cube-lower 
+        h5 About Us
+        span The history behind the world's greatest guitar seller

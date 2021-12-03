@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    section.about
+        if error 
+            p Problem getting db content.
+        else 
+            p Feel free to browse our wares.  There are !{guitarinstance_list.length} guitars in stock.
+    
+    section.subpage-title 
+        h1=title
+    
+    section.cube-container-loop
+        each guitar in guitarinstance_list
+            a.cube(href=guitar.url)
+                div.index-cube-lower 
+                    h5 !{guitar.guitar.model} 
+                    span !{guitar.status}
+        else 
+            p There are no guitars in stock.

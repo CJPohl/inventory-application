@@ -1,0 +1,20 @@
+extends layout
+
+block content 
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p We are very fortunate at #[em Pickup Artists] to carry some of the finest guitars available.  Below you will find every guitar model we tend to keep in stock.
+
+    section.subpage-title 
+        h1=title
+        
+    section.cube-container-loop
+        each guitar in guitar_list
+            a.cube(href=guitar.url)
+                div.index-cube-lower 
+                    h5 !{guitar.model} 
+                    span !{guitar.manufacturer.name}
+        else 
+            p There are no guitars.
