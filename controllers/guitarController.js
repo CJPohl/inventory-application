@@ -30,7 +30,6 @@ exports.guitar_list = function(req, res, next) {
     Guitar.find({}, 'model manufacturer pickup')
     .sort({model: 1})
     .populate('manufacturer')
-    .populate('pickup')
     .exec(function(err, list_guitar) {
         if (err) { return next(err); }
         // Success
@@ -39,8 +38,32 @@ exports.guitar_list = function(req, res, next) {
 };
 
 // Display page for a specific guitar
-exports.guitar_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Guitar detail: ' + req.params.id);
+exports.guitar_detail = function(req, res, next) {
+
+    async.parallel({
+        guitar: function(callback) {
+            
+            Guitar.findById(req.params.id)
+            .populate('manufacturer')
+            .populate('pickup')
+            .exec(callback);
+        },
+        guitar_instance: function(callback) {
+             GuitarInstance.find({'guitar': req.params.id})
+            .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        // no results
+        if (results.guitar==null) { // No results.
+            var err = new Error('Guitar not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Sucess
+        res.render('guitar_detail', {title: results.guitar.model, guitar: results.guitar, guitar_instances: results.guitar_instance});
+    });
+    
 };
 
 // Display guitar create form on GET

@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Detailed information for the !{manufacturer.name}.
+
+    section.subpage-title 
+        h1=title
+    
+    section.detail-info 
+        img(src="", alt="")
+        div.detail-info-description
+            h3 Description: !{manufacturer.description}
+            h3 Founding: !{manufacturer.founding_date}
+        div.guitar-stock 
+            each stock in guitars 
+                section.cube-container-loop
+                    a.cube(href=stock.url)
+                        div.index-cube-lower 
+                            h5 !{stock.model} 
+                            span !{stock.pickup.name}
+                if guitar_instances === null 
+                    p There are no guitars of this manufacturer in stock.

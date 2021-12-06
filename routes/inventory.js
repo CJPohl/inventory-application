@@ -6,6 +6,15 @@ var guitar_controller = require('../controllers/guitarController');
 var guitarinstance_controller = require('../controllers/guitarinstanceController');
 var manufacturer_controller = require('../controllers/manufacturerController');
 var pickup_controller = require('../controllers/pickupController');
+var misc_controller = require('../controllers/miscController');
+
+
+/// MISC ROUTES ///
+
+// About us GET
+router.get('/about', misc_controller.about_get);
+
+router.get('/modifications', misc_controller.modifications_get);
 
 /// ALL INVENTORY ROUTES ///
 
@@ -47,6 +56,12 @@ router.get('/guitarinstance/all', guitarinstance_controller.guitarinstance_list)
 
 // List all manufacturers GET
 router.get('/manufacturer/all', manufacturer_controller.manufacturer_list);
+
+// Display one manufacturer GET
+router.get('/manufacturer/:id', manufacturer_controller.manufacturer_detail);
+
+
+/// PICKUPS ROUTES ///
 
 // List all pickups GET
 router.get('/pickup/all', pickup_controller.pickup_list);

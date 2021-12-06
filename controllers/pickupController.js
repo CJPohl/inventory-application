@@ -4,7 +4,7 @@ var Pickup = require('../models/pickup');
 exports.pickup_list = function(req, res, next) {
 
     Pickup.find()
-        .sort([['name', 'ascending']])
+        .sort([['name', 'descending']])
         .exec(function (err, list_pickups) {
             if (err) { return next(err); }
             // Success

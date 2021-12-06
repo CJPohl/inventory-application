@@ -1,0 +1,31 @@
+extends layout 
+
+block content 
+
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Detailed information for the !{guitar.model}.
+
+    section.subpage-title 
+        h1=title
+
+    section.detail-info 
+        img(src="", alt="")
+        div.detail-info-description 
+            h3 Description: !{guitar.description}
+            h3 Manufacturer: !{guitar.manufacturer.name}
+            h3 Pickup-type: !{guitar.pickup.name}
+            h3 Current Inventory: !{guitar_instances.length}
+        div.guitar-stock
+            each stock in guitar_instances 
+                section.cube-container-loop
+                    a.cube(href=stock.url)
+                        div.index-cube-lower 
+                            h5 !{stock.status} 
+                            span !{guitar.price}
+                if guitar_instances === null 
+                    p There are no guitars of this model in stock.
+                    
+        
