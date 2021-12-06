@@ -27,5 +27,13 @@ block content
                             span !{guitar.price}
                 if guitar_instances === null 
                     p There are no guitars of this model in stock.
+    
+    section.crud-options
+        p
+            button.form-button
+                a(href=guitar.url+'/delete') Delete Guitar
+        p
+            button.form-button
+                a(href=guitar.url+'/update') Update Guitar
                     
         

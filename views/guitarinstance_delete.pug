@@ -1,0 +1,14 @@
+extends layout 
+
+block content
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Stock ID: !{guitarinstance.id}.
+    
+    form(method='POST' action='')
+        div.form-content 
+            h1 Are you sure you want to delete stock item !{guitarinstance.id}?
+            input#guitarinstanceid(type='hidden',name='guitarinstanceid', required='true', value=guitarinstance.id)
+            button.form-button(type='submit') Delete

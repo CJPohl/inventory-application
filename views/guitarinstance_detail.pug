@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Stock ID: !{guitarinstance.id}.
+
+    section.subpage-title 
+        h1=title
+    
+    section.detail-info 
+        img(src="", alt="")
+        div.detail-info-description
+            h3 Price: !{guitarinstance.guitar.price}
+            h3 Status: !{guitarinstance.status}
+            h3 Purchase Information: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste commodi, atque deleniti nemo quod porro aperiam tenetur placeat! Sed optio beatae, tenetur unde amet vitae fugit voluptatum doloribus atque exercitationem praesentium reprehenderit quos fuga itaque obcaecati eius sunt repellendus numquam quasi cupiditate adipisci excepturi distinctio! Temporibus facilis molestiae velit ad eveniet dolorum consectetur nobis quas ut quidem impedit officiis, veritatis, error atque iure nemo, vel provident! Inventore repellendus labore asperiores. Quasi totam blanditiis nostrum cum odio maxime quos amet illo doloribus nesciunt. Illo iste at distinctio quasi quibusdam excepturi eveniet nam pariatur optio incidunt, a exercitationem adipisci cupiditate laudantium mollitia vel illum voluptates. Id, assumenda earum deserunt neque optio nulla, nostrum culpa ipsam eveniet distinctio eligendi quo itaque molestias dolores praesentium in tempore dolor nemo placeat, error possimus incidunt! Quae eligendi, ad neque nihil sequi ab distinctio recusandae adipisci fuga veritatis beatae, quod facere totam perspiciatis dolorum eaque, modi illum obcaecati aliquam velit. Cum aut tempora optio officia ex sit nihil explicabo minima voluptas, labore accusamus ipsum inventore, beatae itaque ducimus ipsam expedita aliquid laborum praesentium odio in ut! Reprehenderit exercitationem aperiam fugit repellendus iusto minus debitis in sequi earum vitae, voluptas commodi maiores animi quibusdam sint. Illo, commodi nostrum.
+            h3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, eum, consectetur iure distinctio autem obcaecati aperiam quis molestiae iste praesentium saepe. Necessitatibus nulla, fugit sequi quam omnis vero quibusdam reprehenderit mollitia provident, ipsam laudantium aspernatur officiis! Minus reiciendis incidunt perspiciatis quas, asperiores mollitia non odio harum provident dicta? Laudantium doloremque eum eos praesentium earum iusto exercitationem expedita! Autem accusantium aspernatur numquam consequatur necessitatibus maxime ipsam corrupti magnam architecto animi nulla at, optio dolor ratione quo vero reprehenderit eum odit blanditiis aliquam quibusdam delectus itaque a! Velit asperiores hic qui, sapiente consequatur expedita nemo, cupiditate temporibus praesentium magnam harum repudiandae, eius quidem atque mollitia nesciunt quo eveniet suscipit officia eos in ut? Laudantium nihil illum delectus blanditiis natus explicabo vitae eligendi, deleniti, rem soluta in sed, tempore voluptates ducimus hic. Maiores earum dolores dolorem repellendus, pariatur cumque illum a, tempore blanditiis ipsum reiciendis repudiandae perspiciatis tempora voluptas porro neque fuga debitis veniam, ducimus hic dignissimos ex nesciunt. Perspiciatis, nihil. Saepe ad repellat libero porro a incidunt modi dolor ipsam quis, quaerat amet, eius nisi nobis? Fugiat, architecto non libero reiciendis doloremque possimus aut soluta quia quisquam officiis voluptatibus nobis delectus earum nihil reprehenderit et vel fuga, itaque quidem tempore nisi modi.
+    
+    section.crud-options
+        p
+            button.form-button
+                a(href=guitarinstance.url+'/delete') Delete Stock
+        p
+            button.form-button
+                a(href=guitarinstance.url+'/update') Update Stock

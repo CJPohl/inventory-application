@@ -1,0 +1,36 @@
+extends layout 
+
+block content 
+    block content 
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Detailed information for the !{pickup.name}.
+
+    section.subpage-title 
+        h1=title
+
+    section.detail-info 
+        img(src="", alt="")
+        div.detail-info-description
+            h3 Description: !{pickup.description}
+            h3 Other Info: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis corporis nesciunt adipisci, totam mollitia facilis autem unde animi nobis. Omnis architecto pariatur tempora tempore quia eum. Magnam sapiente natus tempore non quia nemo dignissimos debitis necessitatibus, iure est nihil quae reiciendis recusandae! Repellat fugit molestiae laborum doloremque exercitationem itaque quae quidem unde et, facilis dignissimos! Magnam veniam, voluptatem ex doloremque reprehenderit veritatis eveniet, aut expedita doloribus accusamus rem est culpa quasi voluptates debitis. Voluptatibus voluptatum, sequi fugit, nemo accusamus nobis aliquam nihil sapiente veritatis in error aut? Ducimus nesciunt minima nobis ut illo commodi est cum, iste, aliquam dolorem ratione?
+            h3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem veniam nostrum iure corporis sint nemo accusantium voluptate, delectus libero ea similique hic eligendi perferendis nobis modi doloremque recusandae quasi illo a deserunt distinctio corrupti? Cumque optio deserunt provident quas perferendis ipsum laborum rem accusamus facilis nulla iusto sed maxime ratione nemo, sunt ad facere ipsam deleniti non eaque reiciendis officia animi! Eum illum expedita, consequuntur facilis laudantium deserunt nam minima neque explicabo quaerat id quo ut eos provident nulla inventore debitis fugiat culpa! Commodi corporis totam, eius quis saepe illo quisquam exercitationem vitae delectus quas accusamus, velit beatae molestiae sequi.
+        div.guitar-stock
+            each guitar in guitars 
+                section.cube-container-loop
+                    a.cube(href=guitar.url)
+                        div.index-cube-lower 
+                            h5 !{guitar.model} 
+                            span !{guitar.manufacturer.name}
+                if guitars === null 
+                    p There are no guitars of this manufacturer in stock.
+
+    section.crud-options
+        p
+            button.form-button
+                a(href=pickup.url+'/delete') Delete Pickup
+        p
+            button.form-button
+                a(href=pickup.url+'/update') Update Pickup

@@ -1,0 +1,27 @@
+extends layout 
+
+block content
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Guitar: !{guitar.model}.
+    
+    if guitar_instance.length
+        section.delete-problem-content
+            h2 Remove the following stock before deleting this guitar.
+            h2 Current Stock 
+            div.guitar-stock
+                each stock in guitar_instance 
+                    section.cube-container-loop
+                        a.cube(href=stock.url)
+                            div.index-cube-lower 
+                                h5 !{guitar.model} 
+                                span !{stock.status}
+    
+    else
+        form(method='POST' action='')
+            div.form-content 
+                h1 Are you sure you want to delete guitar model !{guitar.model}?
+                input#guitarid(type='hidden',name='guitarid', required='true', value=guitar.id)
+                button.form-button(type='submit') Delete

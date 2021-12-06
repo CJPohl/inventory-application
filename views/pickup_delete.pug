@@ -1,0 +1,27 @@
+extends layout 
+
+block content
+    section.about 
+        if error 
+            p Problem getting db content.
+        else 
+            p Pickup: !{pickup.name}.
+    
+    if guitars.length
+        section.delete-problem-content
+            h2 Remove the following guitar models before deleting this pickup.
+            h2 Guitars 
+            div.guitar-stock
+                each guitar in guitars 
+                    section.cube-container-loop
+                        a.cube(href=guitar.url)
+                            div.index-cube-lower 
+                                h5 !{guitar.model} 
+                                span !{guitar.manufacturer.name}
+    
+    else
+        form(method='POST' action='')
+            div.form-content 
+                h1 Are you sure you want to delete pickup !{pickup.name}?
+                input#pickupid(type='hidden',name='pickupid', required='true', value=pickup.id)
+                button.form-button(type='submit') Delete

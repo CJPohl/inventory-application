@@ -37,7 +37,7 @@ exports.guitar_list = function(req, res, next) {
     });
 };
 
-// Display page for a specific guitar
+// Display page for a specific guitar on GET
 exports.guitar_detail = function(req, res, next) {
 
     async.parallel({
@@ -78,12 +78,39 @@ exports.guitar_create_post = function(req, res) {
 
 // Display guitar delete form on GET
 exports.guitar_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Guitar delete GET');
-};
+    
+    async.parallel({
+
+        guitar: function(callback) {
+            Guitar.findById(req.params.id)
+            .exec(callback);
+        },
+
+        guitar_instance: function(callback) {
+            GuitarInstance.find({'guitar': req.params.id})
+            .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        // Success
+        res.render('guitar_delete', {guitar: results.guitar, guitar_instance: results.guitar_instance});
+    });
+
+}
 
 // Handle guitar delete form on POST
 exports.guitar_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Guitar delete POST');
+    
+    Guitar.findById(req.body.id)
+    .exec(function(err, guitar) {
+        if (err) { return next(err); }
+        Guitar.findByIdAndDelete(req.body.id, function(err) {
+            if (err) { return next(err); }
+            // Success and redirect
+            res.redirect('/inventory/guitar/all');
+        });
+    });
+    
 };
 
 // Display guitar update form on GET

@@ -24,3 +24,11 @@ block content
                             span !{stock.pickup.name}
                 if guitar_instances === null 
                     p There are no guitars of this manufacturer in stock.
+    
+    section.crud-options
+        p
+            button.form-button
+                a(href=manufacturer.url+'/delete') Delete Manufacturer
+        p
+            button.form-button
+                a(href=manufacturer.url+'/update') Update Manufacturer

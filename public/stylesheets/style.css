@@ -177,6 +177,53 @@ header nav h3 {
   gap: 2rem;
 }
 
+.crud-options {
+  border-top: 1px solid rgba(17, 17, 17, 0.068);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.068);
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.crud-options a {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.delete-problem-content {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  gap: 2rem;
+}
+
+.form-button {
+  background-color: green;
+  color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: uppercase;
+  padding: .5rem 2.5rem;
+  letter-spacing: .1rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: rgba(0, 128, 0, 0.829);
+}
+
 .create-nav ul {
   padding: 2rem 0;
   display: flex;
