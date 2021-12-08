@@ -23,5 +23,5 @@ block content
         form(method='POST' action='')
             div.form-content 
                 h1 Are you sure you want to delete Manufacturer !{manufacturer.name}?
-                input#manufacturerid(type='hidden',name='manufacturerid', required='true', value=manufacturer.id)
+                input#manufacturerid(type='hidden',name='manufacturerid', required='true', value=manufacturer._id)
                 button.form-button(type='submit') Delete

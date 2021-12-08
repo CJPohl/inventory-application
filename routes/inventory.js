@@ -33,21 +33,27 @@ router.post('/guitar/create', guitar_controller.guitar_create_post);
 router.get('/guitar/:id/delete', guitar_controller.guitar_delete_get);
 
 // Delete guitar POST
-router.get('/guitar/:id/delete', guitar_controller.guitar_delete_post);
+router.post('/guitar/:id/delete', guitar_controller.guitar_delete_post);
 
 // Update guitar GET
 router.get('/guitar/:id/update', guitar_controller.guitar_update_get);
 
 // Update guitar POST
-router.get('/guitar/:id/update', guitar_controller.guitar_update_post)
+router.post('/guitar/:id/update', guitar_controller.guitar_update_post)
 
 // List all guitars GET
-router.get('/guitarsall', guitar_controller.guitar_list);
+router.get('/guitar/all', guitar_controller.guitar_list);
 
 // Display one guitar GET
 router.get('/guitar/:id', guitar_controller.guitar_detail);
 
 /// GUITAR INSTANCE ROUTES ///
+
+// Create one guitar instance GET
+router.get('/guitarinstance/create', guitarinstance_controller.guitarinstance_create_get);
+
+// Create one guitar instance POST
+router.post('/guitarinstance/create', guitarinstance_controller.guitarinstance_create_post);
 
 // List all guitar instances GET
 router.get('/guitarinstance/all', guitarinstance_controller.guitarinstance_list);
@@ -61,10 +67,22 @@ router.get('/guitarinstance/:id/delete', guitarinstance_controller.guitarinstanc
 // Delete one guitar instance POST
 router.post('/guitarinstance/:id/delete', guitarinstance_controller.guitarinstance_delete_post);
 
+// Update one guitar instance GET
+router.get('/guitarinstance/:id/update', guitarinstance_controller.guitarinstance_update_get);
+
+// Update one guitar instance POST
+router.post('/guitarinstance/:id/update', guitarinstance_controller.guitarinstance_update_post);
+
 /// MANUFACTURER ROUTES ///
 
 // List all manufacturers GET
 router.get('/manufacturer/all', manufacturer_controller.manufacturer_list);
+
+// Create one manufacturer GET
+router.get('/manufacturer/create', manufacturer_controller.manufacturer_create_get);
+
+// Create one manufacturer POST
+router.post('/manufacturer/create', manufacturer_controller.manufacturer_create_post);
 
 // Display one manufacturer GET
 router.get('/manufacturer/:id', manufacturer_controller.manufacturer_detail);
@@ -75,6 +93,12 @@ router.get('/manufacturer/:id/delete', manufacturer_controller.manufacturer_dele
 // Delete one manufacturer POST
 router.post('/manufacturer/:id/delete', manufacturer_controller.manufacturer_delete_post);
 
+// Update one manufacturer GET
+router.get('/manufacturer/:id/update', manufacturer_controller.manufacturer_update_get);
+
+// Update one manufacturer POST
+router.post('/manufacturer/:id/update', manufacturer_controller.manufacturer_update_post);
+
 /// PICKUPS ROUTES ///
 
 // List all pickups GET
@@ -82,11 +106,5 @@ router.get('/pickup/all', pickup_controller.pickup_list);
 
 // Display one pickup
 router.get('/pickup/:id', pickup_controller.pickup_detail);
-
-// Delete one pickup GET
-router.get('/pickup/:id/delete', pickup_controller.pickup_delete_get);
-
-// Delete one pickup POST
-router.post('/pickup/:id/delete', pickup_controller.pickup_delete_post);
 
 module.exports = router;

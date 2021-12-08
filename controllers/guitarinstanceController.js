@@ -4,6 +4,7 @@ var Manufacturer = require('../models/manufacturer');
 var Pickup = require('../models/pickup');
 
 var async = require('async');
+const { body,validationResult } = require('express-validator');
 
 // Display list of all guitar instances GET
 exports.guitarinstance_list = function(req, res, next) {
@@ -58,3 +59,119 @@ exports.guitarinstance_delete_post = function(req, res, next) {
     });
 
 }
+
+// Display guitar instance create GET
+exports.guitarinstance_create_get = function(req, res, next) {
+    
+    Guitar.find()
+    .exec(function(err, guitar_list) {
+        if (err) { return next(err); }
+        // Success
+        res.render('guitarinstance_form', {title: 'Create Form', guitars: guitar_list});
+    });
+
+}
+
+// Handle guitar instance create POST
+exports.guitarinstance_create_post = [
+
+    // Validation and Sanitation
+    body('guitarinstance_guitar').trim().escape(),
+    body('guitarinstance_status').trim().escape(),
+
+    // Process req
+    (req, res, next) => {
+
+
+        // Extract errors
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            Guitar.find()
+            .exec(function(err, guitar_list) {
+                if (err) { return next(err); }
+                // Success
+                res.render('guitarinstance_form', {title: 'Create Form', guitarinstance: req.body, guitars: guitar_list});
+            });
+
+            return;
+        }
+        else {
+             // Form data is valid
+
+            // Guitar instance Object
+            var guitarinstance = new GuitarInstance(
+                {
+                    guitar: req.body.guitarinstance_guitar,
+                    status: req.body.guitarinstance_status
+                }
+            );
+
+            guitarinstance.save(function (err) {
+                if (err) { return next(err); }
+                // Success
+                res.redirect(guitarinstance.url);
+            });
+        }
+    }
+]
+
+exports.guitarinstance_update_get = function(req, res, next) {
+
+    async.parallel({
+        guitarinstance: function(callback) {
+            GuitarInstance.findById(req.params.id)
+            .populate('guitar')
+            .exec(callback)
+        },
+        guitars: function(callback) {
+            Guitar.find()
+            .exec(callback)
+        },
+    }, function (err, results) {
+        if (err) { return next(err); }
+        // Success
+        res.render('guitarinstance_form', {title: 'Update Form', guitarinstance: results.guitarinstance, guitars: results.guitars})
+    });
+    
+}
+
+exports.guitarinstance_update_post = [
+
+     // Validation and Sanitation
+     body('guitarinstance_guitar').trim().escape(),
+     body('guitarinstance_status').trim().escape(),
+
+    // Process req
+    (req, res, next) => {
+
+        // Extract errors
+        const errors = validationResult(req);
+
+        var guitarinstance = new GuitarInstance({
+                guitar: req.body.guitarinstance_guitar,
+                status: req.body.guitarinstance_status,
+                _id: req.params.id
+            }
+        );
+
+        if (!errors.isEmpty()) {
+            Guitar.find()
+            .exec(function (err, guitar_list) {
+                if (err) { return next(err); }
+                // Success
+                res.render('guitarinstance_form', {title: 'Update Form', guitarinstance: req.body, guitars: guitar_list});
+                return;
+                }
+            );
+        }
+        else {
+            // Form data is valid
+            GuitarInstance.findByIdAndUpdate(req.params.id, guitarinstance, {}, function (err, theguitarinstance) {
+                if (err) { return next(err); }
+                // Success
+                res.redirect(theguitarinstance.url);
+            });
+        }
+    }
+]

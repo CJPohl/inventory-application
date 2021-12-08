@@ -22,6 +22,7 @@ block content
             each stock in guitar_instances 
                 section.cube-container-loop
                     a.cube(href=stock.url)
+                        img(src="/images/static/guitars/"+guitar.model+".jpg", alt="Guitar Picture")
                         div.index-cube-lower 
                             h5 !{stock.status} 
                             span !{guitar.price}

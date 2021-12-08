@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+    section.about
+        if error 
+            p Problem getting db content.
+        else 
+            p Manufacturer
+    
+    section.subpage-title 
+        h1=title
+    
+    section.create-update-form 
+        form(method='POST' action='')
+            input#manufacturer_name(type='text' placeholder='Name' required='true' name='manufacturer_name' value=(undefined===manufacturer ? '' : manufacturer.name))
+            input#manufacturer_description(type='text' placeholder='Description' required='true' name='manufacturer_description' value=(undefined===manufacturer ? '' : manufacturer.description))
+            input#manufacturer_founding(type='date' placeholder='Founding Date' required='true' name='manufacturer_founding' value=(undefined===manufacturer ? '' : manufacturer.founding))
+            button#cu-button.form-button(type='submit') Submit
+        if errors 
+            ul 
+                for error in errors 
+                    li!= error.msg

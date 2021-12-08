@@ -21,16 +21,9 @@ block content
             each guitar in guitars 
                 section.cube-container-loop
                     a.cube(href=guitar.url)
+                        img(src="/images/static/guitars/"+guitar.model+".jpg", alt="Guitar Picture")
                         div.index-cube-lower 
                             h5 !{guitar.model} 
                             span !{guitar.manufacturer.name}
                 if guitars === null 
                     p There are no guitars of this manufacturer in stock.
-
-    section.crud-options
-        p
-            button.form-button
-                a(href=pickup.url+'/delete') Delete Pickup
-        p
-            button.form-button
-                a(href=pickup.url+'/update') Update Pickup

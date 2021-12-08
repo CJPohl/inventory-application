@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    section.about
+        if error 
+            p Problem getting db content.
+        else 
+            p Guitar Stock
+    
+    section.subpage-title 
+        h1=title
+    
+    section.create-update-form 
+        form(method='POST' action='')
+            select#guitarinstance_guitar(type='select' placeholder='Select Guitar' name='guitarinstance_guitar' required='true') 
+                for guitar in guitars
+                    if guitarinstance 
+                        option(value=guitar._id selected=(guitar._id.toString()===guitarinstance.guitar._id.toString() ? 'selected' : false) ) #{guitar.model}
+                    else 
+                        option(value=guitar._id) #{guitar.model}
+            select#guitarinstance_status(type='select' placeholder='Guitar Status' name='guitarinstance_status' required='true' )
+                option(value='New') New 
+                option(value='Used') Used 
+                option(value='Refurbished') Refurbished
+            button#cu-button.form-button(type='submit') Submit
+        if errors 
+            ul 
+                for error in errors 
+                    li!= error.msg

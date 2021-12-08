@@ -10,5 +10,5 @@ block content
     form(method='POST' action='')
         div.form-content 
             h1 Are you sure you want to delete stock item !{guitarinstance.id}?
-            input#guitarinstanceid(type='hidden',name='guitarinstanceid', required='true', value=guitarinstance.id)
+            input#guitarinstanceid(type='hidden',name='guitarinstanceid', required='true', value=guitarinstance._id)
             button.form-button(type='submit') Delete

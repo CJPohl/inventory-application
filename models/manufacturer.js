@@ -7,7 +7,7 @@ var ManufacturerSchema = new Schema(
     {
         name: {type: String, required: true},
         description: {type: String, required: true},
-        founding: {type: Date}
+        founding: {type: Date},
     }
 );
 

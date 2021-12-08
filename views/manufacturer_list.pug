@@ -13,6 +13,7 @@ block content
     section.cube-container-loop
         each manufacturer in manufacturer_list 
             a.cube(href=manufacturer.url)
+                img(src="/images/static/manufacturers/"+manufacturer.name+".jpg", alt="Manufacturer Logo")
                 div.index-cube-lower 
                     h5 !{manufacturer.name} 
                     span Founded !{manufacturer.founding_date}

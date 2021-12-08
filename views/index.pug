@@ -6,34 +6,39 @@ block content
       p Problem getting db content.
     else 
       p Welcome to #[em Pickup Artists], the world's greatest provider and curator of the best guitars available.  Currently our warehouse holds !{data.guitar_instance_count} guitars from !{data.manufacturer_count} different manufacturers.  !{data.guitar_instance_refurbished_count} of which are refurbished!  The creaters and hardworking employees of #[em Pickup Artists] are always on the look to ripoff unknowing victims and turn a piece of overrated junk into profit. 
-
   section.cube-container
-    a.cube(href="/inventory/guitarsall")
+    a.cube(href="/inventory/guitar/all")
+      img(src="images/static/index/guitars.jpg", alt="Lots of Guitars")
       div.index-cube-lower 
         h5 All Guitar Models 
         span !{data.guitar_count} guitars and counting
     
-    a.cube(href="/inventory/guitarinstance/all", id="cube-1") 
+    a.cube(href="/inventory/guitarinstance/all", id="cube-1")
+      img(src="images/static/index/inventory.jpg", alt="Current Inventory") 
       div.index-cube-lower 
         h5 Current Inventory
         span !{data.guitar_instance_count} guitars and counting 
     
-    a.cube(href="/inventory/manufacturer/all") 
+    a.cube(href="/inventory/manufacturer/all")
+      img(src="images/static/index/manufacturers.jpg", alt="Guitar Maker") 
       div.index-cube-lower 
         h5 All Manufacturers
         span !{data.manufacturer_count} manufacturers and counting
 
-    a.cube(href="/inventory/pickup/all", id="cube-3") 
+    a.cube(href="/inventory/pickup/all", id="cube-3")
+      img(src="images/static/index/pickups.png", alt="Different Guitar Pickups") 
       div.index-cube-lower 
         h5 Pickup Information
         span How does these pickups sound different?
     
     a.cube(href="/inventory/modifications") 
+      img(src="images/static/index/modifications.jpg", alt="Pencil Weighing Down Scale")
       div.index-cube-lower 
         h5 Inventory Modifications
         span Add, update, or delete our inventory. We don't care!
 
     a.cube(href="/inventory/about", id="cube-5") 
+      img(src="images/static/index/about-us.jpg", alt="Person At Laptop")
       div.index-cube-lower 
         h5 About Us
         span The history behind the world's greatest guitar seller

@@ -23,5 +23,5 @@ block content
         form(method='POST' action='')
             div.form-content 
                 h1 Are you sure you want to delete guitar model !{guitar.model}?
-                input#guitarid(type='hidden',name='guitarid', required='true', value=guitar.id)
+                input#guitarid(type='hidden',name='guitarid', required='true', value=guitar._id)
                 button.form-button(type='submit') Delete
